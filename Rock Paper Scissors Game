@@ -1,0 +1,53 @@
+#Rock Paper Scissors Game
+import random
+#Initializing needed variables to 0
+player1 = 0
+score1 = 0
+score2 = 0
+games = int(input("First to how many points? (up to 100)"))
+if games > 100:
+    print("That number of games is not available please try again")
+else:
+    print("FIRST TO " + str(games) + " POINTS")
+    while(score1 != games) and (score2 != games) and (player1 != "STOP"):
+        player1 = input("Enter your move (rock, paper, scissors) (STOP to end)")
+        computer = random.choice(["rock","paper","scissors"])
+#Valid and invalid choices for moves
+        if player1 != "rock" and player1 != "scissors" and player1 != "paper" and player1 != "STOP":
+            print("That move is not available, please try again")
+        elif player1 == "rock" or player1 == "paper" or player1 == "scissors":
+            print("\nPlayer chose " + player1.upper())
+            print("The computer chose " + computer.upper() + "\n")                
+#All outcomes where the user ties    
+            if player1 == "rock" and computer == "rock":
+                print("Tie!")
+            elif player1 == "paper" and computer == "paper":
+                print("Tie!")
+            elif player1 == "scissors" and computer == "scissors":
+                print("Tie!")
+#All outcomes where the user beats the computer
+            elif player1 == "rock" and computer == "scissors":
+                print("Rock smashes scissors, Player wins!")
+                score1 = score1 + 1
+            elif player1 == "paper" and computer == "rock":
+                print("Paper covers rock, Player wins!")
+                score1 = score1 + 1
+            elif player1 == "scissors" and computer == "paper":
+                print("Scissors cut paper, Player wins!")
+                score1 = score1 + 1
+#All outcomes where the computer beats the user    
+            elif computer == "rock" and player1 == "scissors":
+                print("Rock smashes scissors, The computer wins!")
+                score2 = score2 + 1
+            elif computer == "paper" and player1 == "rock":
+                print("Paper covers rock, The computer wins!")
+                score2 = score2 + 1
+            elif computer == "scissors" and player1 == "paper":
+                print("Scissors cut paper, The computer wins!")
+                score2 = score2 + 1
+#Printing the scoreboard and divider            
+            print("\nPlayer: " + str(score1) + "\t Computer: " + str(score2))
+            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+    if player1 == "STOP":
+        print("Player forfeit :(")
+    
